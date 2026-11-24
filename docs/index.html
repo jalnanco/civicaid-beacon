@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CivicAid Beacon — Open Agentic Web Disaster Relief &amp; NANDA Trust Mesh</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand-group">
+      <div class="brand-badge" aria-hidden="true">CB</div>
+      <div>
+        <div class="brand-row">
+          <h1>CivicAid Beacon</h1>
+          <span class="pill pill-spec">MVP Profile 0.2 Compliant</span>
+          <span class="pill pill-nanda" id="header-nanda-pill">NANDA ECDSA P-256 Verified</span>
+        </div>
+        <p class="brand-sub">Browser-Executed Humanitarian Shelter &amp; Medical Cold-Chain Agentic Mesh — Zero Backend Servers, Zero PII Leakage</p>
+      </div>
+    </div>
+
+    <div class="top-controls">
+      <nav class="nav-tabs" role="tablist" aria-label="Workbench Views">
+        <button type="button" class="tab-btn active" data-tab="mesh" role="tab">01 · Relief Triage Mesh</button>
+        <button type="button" class="tab-btn" data-tab="trace" role="tab">02 · Zero-Leak Security &amp; Guards</button>
+        <button type="button" class="tab-btn" data-tab="auditor" role="tab">03 · Live Spec &amp; NANDA Auditor</button>
+        <button type="button" class="tab-btn" data-tab="artifacts" role="tab">04 · JSON Artifacts &amp; Card</button>
+      </nav>
+      <button type="button" class="btn-router" id="open-router-btn">⚙ <span id="active-router-label">Router: Instant Grounded (No Key)</span></button>
+    </div>
+  </header>
+
+  <!-- VIEW 01: RELIEF TRIAGE MESH -->
+  <main id="view-mesh" class="view-panel active">
+    <div class="mesh-grid">
+      <!-- Column 1: Live Shelter Board & Private sly_data Context -->
+      <section class="card">
+        <div class="card-head">
+          <div>
+            <h2>1. Live Accessible Shelter Bays</h2>
+            <p class="caption">Grounded page state exposed via <code>get_shelter_board_state</code> (stateVersion <span id="state-ver-num">1</span>)</p>
+          </div>
+          <span class="tag-green">Origin A · Caller</span>
+        </div>
+        <div id="shelter-cards-list" class="shelter-list"></div>
+
+        <div class="sly-box">
+          <div class="card-head compact">
+            <h3>Private Medical Context (<code>sly_data</code>)</h3>
+            <span class="tag-amber">Deny-by-Default · Local Only</span>
+          </div>
+          <p class="sly-note">Evaluated locally by <code>clinical_sly_guard</code>; stripped from all cross-origin peer fetches.</p>
+          <div class="sly-grid">
+            <label><input type="checkbox" id="sly-insulin" checked /> <span>2–8°C Insulin Cold-Chain Needed</span></label>
+            <label><input type="checkbox" id="sly-dialysis" checked /> <span>Peritoneal Dialysis Kit Needed</span></label>
+            <label><input type="checkbox" id="sly-wheelchair" checked /> <span>ADA Step-Free Wheelchair Ramp</span></label>
+          </div>
+          <div class="sly-kv">
+            <span>Case Token (Private): <code>EVAC-KR-8841</code></span>
+            <span>Outbound to Peers: <strong class="emerald-txt">0 bytes</strong></span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Column 2: Multi-Agent Orchestrator & Execution Graph -->
+      <section class="card">
+        <div class="card-head">
+          <div>
+            <h2>2. Browser Multi-Agent Coordinator (<code>relief_coordinator</code>)</h2>
+            <p class="caption">Composes local specialists + cross-origin <code>medsupply_depot</code> peer inside your browser tab</p>
+          </div>
+          <span class="tag-sky" id="exec-status-pill">Ready · Max 12 Steps</span>
+        </div>
+
+        <div class="preset-row">
+          <button type="button" class="chip-btn active" data-scenario="insulin_dialysis">Scenario A: 4 Evacuees · Wheelchair + Insulin &amp; Dialysis (Cross-Origin Peer)</button>
+          <button type="button" class="chip-btn" data-scenario="pediatric">Scenario B: 3 Evacuees · Pediatric Asthma &amp; Sensory Quiet Room</button>
+        </div>
+
+        <div class="query-bar">
+          <input type="text" id="agent-query-input" value="Find an ADA wheelchair-accessible shelter for 4 evacuees, verify cross-origin 2-8C insulin and dialysis kit stock, and stage a reservation." aria-label="Agent request" />
+          <button type="button" id="run-mesh-btn" class="btn-primary">Run Agent Network</button>
+        </div>
+
+        <div class="topology-frame">
+          <svg id="mesh-topology-svg" viewBox="0 0 660 218" aria-label="Multi-Agent Browser Execution Topology"></svg>
+        </div>
+
+        <div class="response-box" id="agent-response-box">
+          <div class="resp-head">
+            <strong>Grounded Coordinator Output</strong>
+            <span class="mono-xs" id="resp-meta-tag">Awaiting run · Click "Run Agent Network"</span>
+          </div>
+          <div id="agent-answer-body" class="resp-body">
+            Select a humanitarian triage scenario above or enter any query, then click <strong>Run Agent Network</strong>. Your browser will validate <code>civicaid_shelter_hub.network.json</code>, ask consent before contacting the cross-origin <code>medsupply_depot</code> peer, verify its ECDSA P-256 <code>agent-card.json</code>, and require your confirmation before committing a shelter bay reservation.
+          </div>
+        </div>
+      </section>
+
+      <!-- Column 3: Live Execution Trace & Confirmed Dispatch Receipts -->
+      <section class="card">
+        <div class="card-head">
+          <div>
+            <h2>3. Observable Execution &amp; Dispatch Receipts</h2>
+            <p class="caption">Real-time step trace, consent audit, and human-confirmed write receipts</p>
+          </div>
+          <span class="mono-xs" id="step-counter-badge">Steps: 0 / 12</span>
+        </div>
+
+        <div class="peer-selector-box">
+          <label class="field-label" for="peer-endpoint-select">Linked Peer Network Endpoint (<code>links.json</code> + Local Override)</label>
+          <select id="peer-endpoint-select">
+            <option value="https://raw.githubusercontent.com/jalnanco/medsupply-depot-peer/main/docs/medsupply_depot">Cross-Origin Peer: raw.githubusercontent.com/.../medsupply_depot</option>
+            <option value="https://jalnanco.github.io/medsupply-depot-peer/medsupply_depot">Independent Peer Site: jalnanco.github.io/medsupply-depot-peer/medsupply_depot</option>
+          </select>
+        </div>
+
+        <div id="trace-feed" class="trace-feed"></div>
+
+        <div class="receipt-section">
+          <div class="card-head compact">
+            <h3>Confirmed Shelter &amp; Supply Receipts</h3>
+            <span class="mono-xs">Human-Approved Writes</span>
+          </div>
+          <div id="receipts-list" class="receipts-list">
+            <div class="empty-hint">No mutating actions committed yet. Approve the confirmation dialog during a run to issue a signed receipt.</div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- VIEW 02: ZERO-LEAK SECURITY & FAIL-CLOSED GUARDS -->
+  <section id="view-trace" class="view-panel">
+    <div class="two-panel-grid">
+      <div class="card">
+        <div class="card-head">
+          <div>
+            <h2>Zero-Leak Cross-Origin Packet &amp; Credential Monitor</h2>
+            <p class="caption">Proves BYOK router keys and private <code>sly_data</code> never leave the caller browser toward peer origins</p>
+          </div>
+          <span class="tag-green">0 Bytes Secret Egress</span>
+        </div>
+        <table class="audit-table">
+          <thead>
+            <tr>
+              <th>Hop</th>
+              <th>Destination Origin</th>
+              <th>Artifact / Call</th>
+              <th>Credentials / Auth</th>
+              <th><code>sly_data</code> Egress</th>
+              <th>Outcome</th>
+            </tr>
+          </thead>
+          <tbody id="packet-monitor-tbody"></tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <div>
+            <h2>Interactive Fail-Closed Security Guard Simulator (MVP §5 &amp; §6)</h2>
+            <p class="caption">Click any adversarial vector below to verify deterministic fail-closed runtime enforcement</p>
+          </div>
+          <span class="tag-amber">Fail-Closed Verified</span>
+        </div>
+        <div class="guard-buttons">
+          <button type="button" class="guard-btn" data-guard="tamper">1. Simulate 1-Byte Tampered Peer <code>.network.json</code> (ECDSA + SRI Reject)</button>
+          <button type="button" class="guard-btn" data-guard="cycle">2. Simulate Agent Delegation Cycle Loop (<code>A → B → A</code> Halt)</button>
+          <button type="button" class="guard-btn" data-guard="denied_origin">3. Simulate Unapproved Phishing Origin (<code>peer_policy</code> Block)</button>
+          <button type="button" class="guard-btn" data-guard="budget">4. Simulate Step Budget Overflow (<code>max_steps &gt; 12</code> Cutoff)</button>
+        </div>
+        <pre id="guard-sim-output" class="code-view">Click any guard test above to execute the live runtime defense check and inspect the structured error envelope.</pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIEW 03: LIVE SPEC & NANDA AUDITOR -->
+  <section id="view-auditor" class="view-panel">
+    <div class="card">
+      <div class="card-head">
+        <div>
+          <h2><code>@civicaid/beacon-kit</code> — 12-Point Open Agentic Web &amp; MIT NANDA Conformance Auditor</h2>
+          <p class="caption">Reusable open-source community validator checking MVP Profile 0.2, CORS, Action Bridge, and WebCrypto ECDSA P-256 Agent Cards</p>
+        </div>
+        <span class="pill pill-spec" id="audit-score-pill">12 / 12 Checks Passed (100%)</span>
+      </div>
+
+      <div class="auditor-bar">
+        <select id="audit-preset-select" aria-label="Preset Agentic URLs">
+          <option value="local_beacon">This Site: CivicAid Beacon (civicaid_shelter_hub)</option>
+          <option value="live_depot_pages">Peer Site: https://jalnanco.github.io/medsupply-depot-peer/medsupply_depot</option>
+          <option value="live_beacon_pages">Live Pages: https://jalnanco.github.io/civicaid-beacon/civicaid_shelter_hub</option>
+        </select>
+        <input type="text" id="audit-custom-url" value="https://jalnanco.github.io/civicaid-beacon/civicaid_shelter_hub" aria-label="Target Agentic Network URL" />
+        <button type="button" id="run-audit-btn" class="btn-primary">Audit Agentic Website</button>
+      </div>
+
+      <div id="audit-checks-grid" class="checks-grid"></div>
+    </div>
+  </section>
+
+  <!-- VIEW 04: PUBLISHED ARTIFACTS -->
+  <section id="view-artifacts" class="view-panel">
+    <div class="artifacts-grid">
+      <div class="card">
+        <div class="card-head compact">
+          <h3><code>./agent-manifest.json</code></h3>
+          <a href="./agent-manifest.json" target="_blank" rel="noopener" class="mono-xs">Open Raw JSON ↗</a>
+        </div>
+        <pre id="raw-manifest-pre" class="code-view compact-pre">Loading...</pre>
+      </div>
+      <div class="card">
+        <div class="card-head compact">
+          <h3><code>./civicaid_shelter_hub.network.json</code></h3>
+          <a href="./civicaid_shelter_hub.network.json" target="_blank" rel="noopener" class="mono-xs">Open Raw JSON ↗</a>
+        </div>
+        <pre id="raw-network-pre" class="code-view compact-pre">Loading...</pre>
+      </div>
+      <div class="card">
+        <div class="card-head compact">
+          <h3><code>./.well-known/agent-card.json</code> (MIT NANDA + A2A)</h3>
+          <a href="./.well-known/agent-card.json" target="_blank" rel="noopener" class="mono-xs">Open Raw Card ↗</a>
+        </div>
+        <pre id="raw-card-pre" class="code-view compact-pre">Loading...</pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODAL 1: CROSS-ORIGIN PEER CONSENT -->
+  <div id="consent-modal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="consent-title">
+    <div class="modal-card">
+      <div class="modal-head">
+        <span class="tag-amber">Cross-Origin Peer Consent Required (MVP §3.2)</span>
+        <h3 id="consent-title">Allow Browser to Load External Peer Agent Network?</h3>
+      </div>
+      <div class="modal-body">
+        <div class="kv-row"><span>Caller Network:</span><code>civicaid_shelter_hub (relief_coordinator)</code></div>
+        <div class="kv-row"><span>Destination Origin:</span><code id="consent-origin-txt">https://raw.githubusercontent.com</code></div>
+        <div class="kv-row"><span>Requested Network:</span><code id="consent-net-txt">medsupply_depot (front_man: depot_pharmacist)</code></div>
+        <div class="kv-row"><span>NANDA ECDSA P-256 Trust:</span><strong class="emerald-txt" id="consent-sig-txt">Verified via WebCrypto</strong></div>
+        <div class="kv-row"><span>Anonymous Query (&le;140c):</span><code id="consent-query-txt">"Check 2-8C insulin pens &amp; dialysis kits with step-free pickup"</code></div>
+        <div class="kv-row"><span>Private <code>sly_data</code> &amp; API Key:</span><strong class="emerald-txt">BLOCKED (0 bytes sent; runs locally in your browser)</strong></div>
+      </div>
+      <div class="modal-actions">
+        <button type="button" id="consent-deny-btn" class="btn-secondary">Deny Contact</button>
+        <button type="button" id="consent-approve-btn" class="btn-primary">Approve Peer Origin (Session)</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 2: HUMAN-OWNED WRITE ACTION CONFIRMATION -->
+  <div id="action-modal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="action-title">
+    <div class="modal-card">
+      <div class="modal-head">
+        <span class="tag-sky">Mutating Site Action Review (MVP §3.1 &amp; §5)</span>
+        <h3 id="action-title">Confirm Emergency Shelter &amp; Cold-Chain Hold?</h3>
+      </div>
+      <div class="modal-body" id="action-modal-details"></div>
+      <div class="modal-actions">
+        <button type="button" id="action-cancel-btn" class="btn-secondary">Decline Write</button>
+        <button type="button" id="action-confirm-btn" class="btn-primary">Confirm &amp; Commit Reservation</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 3: PLUGGABLE LLM ROUTER & BYOK SETTINGS -->
+  <div id="router-modal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="router-title">
+    <div class="modal-card">
+      <div class="modal-head">
+        <span class="tag-green">Tenet Three: Pluggable Inference &amp; BYOK</span>
+        <h3 id="router-title">Configure Browser LLM Router &amp; Origin-Scoped Key</h3>
+      </div>
+      <div class="modal-body">
+        <label class="field-label" for="router-mode-select">Inference Execution Mode</label>
+        <select id="router-mode-select">
+          <option value="grounded_instant">Instant Grounded Browser Planner (Zero API Key — Default for Judges)</option>
+          <option value="otari_byok">Mozilla Otari OpenAI-Compatible Router (BYOK)</option>
+          <option value="custom_byok">Custom OpenAI-Compatible CORS Router (BYOK)</option>
+        </select>
+
+        <label class="field-label" for="router-base-input" style="margin-top:10px;">Router Base URL</label>
+        <input type="text" id="router-base-input" value="https://api.otari.ai/api/v1" />
+
+        <label class="field-label" for="router-model-input" style="margin-top:10px;">Model Identifier</label>
+        <input type="text" id="router-model-input" value="alibaba/qwen3.8-flash" />
+
+        <label class="field-label" for="router-key-input" style="margin-top:10px;">Visitor API Key (Stored only in origin <code>localStorage</code>; never sent to peers)</label>
+        <input type="password" id="router-key-input" placeholder="Paste Otari or OpenAI-compatible key (optional in Instant mode)" autocomplete="off" />
+      </div>
+      <div class="modal-actions">
+        <button type="button" id="router-clear-btn" class="btn-secondary">Clear Stored Profile</button>
+        <button type="button" id="router-save-btn" class="btn-primary">Save &amp; Apply Router</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="app.mjs"></script>
+</body>
+</html>

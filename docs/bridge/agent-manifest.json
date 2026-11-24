@@ -1,0 +1,11 @@
+{
+  "networks": [
+    {
+      "name": "civicaid_shelter_hub"
+    }
+  ],
+  "actions": {
+    "version": 1,
+    "module": "./bridge-actions.js"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "protocol": "nsdeploy-agent-mcp/v1",
+  "network": "civicaid_shelter_hub",
+  "front_man": "relief_coordinator",
+  "available": false,
+  "reason": "Static GitHub Pages bundle; peer networks compose client-side in the caller's browser."
+}

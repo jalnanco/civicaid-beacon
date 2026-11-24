@@ -1,0 +1,8 @@
+{
+  "version": 1,
+  "networks": {
+    "civicaid_shelter_hub": {
+      "medsupply_cross_origin": "https://raw.githubusercontent.com/jalnanco/medsupply-depot-peer/main/docs/medsupply_depot"
+    }
+  }
+}

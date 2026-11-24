@@ -1,0 +1,76 @@
+{
+  "@context": [
+    "https://schema.org",
+    "https://a2aproject.github.io/A2A/schema/v1",
+    "https://nandaindex.org/ns/agentfacts/v1"
+  ],
+  "@type": "SoftwareApplication",
+  "protocol": "open-agentic-web-mvp-0.2+nanda-agentfacts-v1",
+  "name": "CivicAid Beacon — Decentralized Disaster Shelter & Triage Hub",
+  "description": "Browser-executed multi-agent humanitarian shelter coordinator with deny-by-default sly_data clinical privacy, MIT NANDA ECDSA verification, and cross-origin medical depot composition.",
+  "url": "https://jalnanco.github.io/civicaid-beacon/",
+  "version": "0.2.0",
+  "license": "https://opensource.org/licenses/MIT",
+  "provider": {
+    "organization": "CivicAid Open Humanitarian Mesh",
+    "url": "https://github.com/jalnanco/civicaid-beacon"
+  },
+  "capabilities": {
+    "browserExecution": true,
+    "declarativeNetworkJson": true,
+    "pluggableByokRouter": true,
+    "crossOriginPeerComposition": true,
+    "denyByDefaultSlyData": true,
+    "humanConfirmedWrites": true,
+    "webCryptoSignatureVerification": true
+  },
+  "entrypoints": {
+    "manifest": "https://jalnanco.github.io/civicaid-beacon/agent-manifest.json",
+    "network": "https://jalnanco.github.io/civicaid-beacon/civicaid_shelter_hub.network.json",
+    "links": "https://jalnanco.github.io/civicaid-beacon/links.json",
+    "actionBridge": "https://jalnanco.github.io/civicaid-beacon/bridge/action-bridge.html"
+  },
+  "authentication": {
+    "schemes": [
+      "none-public-artifacts",
+      "visitor-byok-bearer-local-only"
+    ]
+  },
+  "skills": [
+    {
+      "id": "accessible_shelter_matching",
+      "name": "ADA Step-Free & Solar Microgrid Shelter Triage",
+      "description": "Matches household size, wheelchair access, sensory rooms, and 2-8C biologic refrigeration against live shelter bays."
+    },
+    {
+      "id": "zero_leak_sly_guard",
+      "name": "Deny-by-Default Clinical sly_data Audit",
+      "description": "Evaluates sensitive medical needs locally in the visitor's browser without transmitting PII to peer sites."
+    },
+    {
+      "id": "cross_origin_depot_composition",
+      "name": "Consent-Gated Cross-Origin Medical Depot Composition",
+      "description": "Loads and runs external humanitarian medical supply networks locally in the caller's browser after visitor approval."
+    }
+  ],
+  "nanda_identity": {
+    "did": "did:web:jalnanco.github.io:civicaid-beacon",
+    "algorithm": "ECDSA-P256-SHA256",
+    "key_id": "nanda-p256-c7d2cd67aa65a74b",
+    "network_name": "civicaid_shelter_hub",
+    "manifest_sha256_sri": "sha256-PQCEQIVNFnuwmDgm7KkVGmdhueiEvel3RNgLST4u6hU=",
+    "network_sha256_sri": "sha256-O5O45WjRTVsKNouEZZgZmT4mbjF5RWlOb9hOqy6riXY=",
+    "signed_at": "2026-11-24T09:30:00Z",
+    "public_key_jwk": {
+      "key_ops": [
+        "verify"
+      ],
+      "ext": true,
+      "kty": "EC",
+      "x": "mA03aESwV4niAh_fsADzGH3_HWTwxibVa3K5ueu4ZOo",
+      "y": "VrtbZai8rbYknAAO7Wd_07MNPhXPkDLjPl0pvB5EBaA",
+      "crv": "P-256"
+    },
+    "signature_b64url": "eAoEfv-8XjXOtZvuipgGk02ohgVm_h4WN1MfqGihEERgdQ-diyWbapnqjOvPnE3bX5Y35CX6Hf6erkuyQHXbgg"
+  }
+}

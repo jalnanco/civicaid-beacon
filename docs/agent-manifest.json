@@ -1,0 +1,93 @@
+{
+  "brand": "CivicAid Beacon — Decentralized Disaster Relief & Medical Triage Hub",
+  "networks": [
+    {
+      "name": "civicaid_shelter_hub",
+      "front_man": "relief_coordinator",
+      "hocon": "./civicaid_shelter_hub.network.json",
+      "description": "Coordinates accessible disaster shelters, backup power bays, and cross-origin cold-chain medical supply depots directly in the browser with zero PII leakage.",
+      "tags": [
+        "deployed",
+        "nsdeploy",
+        "agentified-website",
+        "humanitarian-relief",
+        "nanda-verified"
+      ],
+      "sample_queries": [
+        "Find a wheelchair-accessible shelter for 4 evacuees needing refrigerated insulin and solar backup power.",
+        "Check cross-origin MedSupply depots for peritoneal dialysis kits and stage an emergency reservation.",
+        "Which shelter has pediatric asthma support and quiet sensory rooms within 3 km?"
+      ]
+    }
+  ],
+  "llm_router": {
+    "base_url": "https://api.otari.ai/api/v1",
+    "mock": false,
+    "byok_router": "https://api.otari.ai/api/v1",
+    "recommended_model": "alibaba/qwen3.8-flash"
+  },
+  "allowed_peers": [
+    "https://raw.githubusercontent.com",
+    "https://jalnanco.github.io",
+    "http://127.0.0.1:8081",
+    "http://localhost:8081"
+  ],
+  "peer_policy": {
+    "mode": "closed",
+    "deny_origins": [
+      "https://untrusted-phishing-shelter.example"
+    ],
+    "note": "Contacts only verified humanitarian partner origins in allowed_peers after explicit visitor consent; sly_data is strictly blocked across origins."
+  },
+  "agent_mcp": {
+    "protocol": "nsdeploy-agent-mcp/v1",
+    "network": "civicaid_shelter_hub",
+    "front_man": "relief_coordinator",
+    "available": false,
+    "reason": "Static GitHub Pages deployment; peer sites interact via the origin-checked action bridge and declarative network composition."
+  },
+  "theme": {
+    "primary": "#0284c7"
+  },
+  "linking": {
+    "protocol": "nsdeploy-link/v1",
+    "exports": [
+      {
+        "network": "civicaid_shelter_hub",
+        "front_man": "relief_coordinator",
+        "aliases": [
+          "civicaid_shelter_hub",
+          "relief_coordinator"
+        ],
+        "url": "civicaid_shelter_hub"
+      }
+    ],
+    "imports": [
+      {
+        "alias": "medsupply_cross_origin",
+        "default_url": "https://raw.githubusercontent.com/jalnanco/medsupply-depot-peer/main/docs/medsupply_depot"
+      }
+    ],
+    "link_updates": {
+      "mode": "browser-local"
+    }
+  },
+  "deployment": {
+    "mode": "static",
+    "self_contained_runtime": true,
+    "browser_mock": false,
+    "direct_byok": true,
+    "direct_mcp_requires_cors": true,
+    "public_mcp_facade": false
+  },
+  "actions": {
+    "version": 1,
+    "module": "./site-actions.js",
+    "bridge": "./bridge/action-bridge.html",
+    "agentTools": [
+      "get_shelter_board_state",
+      "lookup_shelter_capacity",
+      "commit_emergency_reservation"
+    ]
+  }
+}

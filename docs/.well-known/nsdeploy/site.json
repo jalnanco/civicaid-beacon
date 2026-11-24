@@ -1,0 +1,10 @@
+{
+  "profile": "worldwide-agentic-web-mvp-0.2",
+  "site_url": "https://jalnanco.github.io/civicaid-beacon/",
+  "exported_networks": [
+    "civicaid_shelter_hub"
+  ],
+  "agent_card": "https://jalnanco.github.io/civicaid-beacon/.well-known/agent-card.json",
+  "manifest_sha256_sri": "sha256-PQCEQIVNFnuwmDgm7KkVGmdhueiEvel3RNgLST4u6hU=",
+  "network_sha256_sri": "sha256-O5O45WjRTVsKNouEZZgZmT4mbjF5RWlOb9hOqy6riXY="
+}

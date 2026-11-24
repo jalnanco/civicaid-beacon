@@ -1,0 +1,101 @@
+{
+  "metadata": {
+    "description": "Decentralized disaster shelter & medical triage agent network with deny-by-default sly_data privacy and cross-origin peer composition.",
+    "version": "0.2.0",
+    "license": "MIT",
+    "sample_queries": [
+      "Find a wheelchair-accessible shelter for 4 evacuees needing refrigerated insulin and solar power.",
+      "Match a shelter for a dialysis patient and verify cross-origin medical kit stock.",
+      "Reserve an accessible bay with pediatric respiratory support."
+    ]
+  },
+  "llm_config": {
+    "model_name": "alibaba/qwen3.8-flash"
+  },
+  "max_steps": 12,
+  "sly_data_policy": {
+    "default": "deny",
+    "allowed_inbound": [],
+    "allowed_outbound": []
+  },
+  "link_slots": {
+    "medsupply_cross_origin": {
+      "description": "Cross-origin humanitarian medical & solar cold-chain supply peer network."
+    }
+  },
+  "link_labels": {
+    "https://raw.githubusercontent.com/jalnanco/medsupply-depot-peer/main/docs/medsupply_depot": "MedSupply Cold-Chain Peer (Cross-Origin)",
+    "https://jalnanco.github.io/medsupply-depot-peer/medsupply_depot": "MedSupply Relief Depot (GitHub Pages)"
+  },
+  "tools": [
+    {
+      "name": "relief_coordinator",
+      "function": {
+        "description": "Public front_man for CivicAid Beacon. Orchestrates local shelter specialists, private sly_data clinical triage, cross-origin medical depot peers, and confirmed reservation actions.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "request": {
+              "type": "string",
+              "description": "Evacuee or relief coordinator request in plain English."
+            }
+          },
+          "required": [
+            "request"
+          ]
+        }
+      },
+      "instructions": "You are relief_coordinator, the front_man of CivicAid Beacon. 1) Ground shelter availability in website_get_shelter_board_state and accessibility_planner. 2) Delegate private medical triage checks locally to clinical_sly_guard; NEVER forward sly_data fields (patient IDs, insulin/dialysis flags, contact hashes) to external peers. 3) When medical biologics or cold-chain supplies are needed, ask medsupply_cross_origin (or the linked peer URL) using strictly anonymous item queries after visitor consent. 4) Propose website_commit_emergency_reservation only when ready so the browser runtime displays the human confirmation dialog.",
+      "tools": [
+        "accessibility_planner",
+        "clinical_sly_guard",
+        "medsupply_cross_origin",
+        "https://jalnanco.github.io/medsupply-depot-peer/medsupply_depot"
+      ]
+    },
+    {
+      "name": "accessibility_planner",
+      "function": {
+        "description": "Matches evacuee party size, wheelchair ramp access, backup microgrid power, and quiet sensory zones against live shelter bays.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "party_size": {
+              "type": "integer",
+              "description": "Number of evacuees in the household."
+            },
+            "mobility_need": {
+              "type": "string",
+              "description": "Accessibility requirement such as step-free, wheelchair, or standard."
+            }
+          },
+          "required": [
+            "party_size"
+          ]
+        }
+      },
+      "instructions": "Evaluate local shelter capacity, ADA ramp access, medical microgrid uptime, and transit distance. Return ranked shelter codes without inventing capacities.",
+      "tools": []
+    },
+    {
+      "name": "clinical_sly_guard",
+      "function": {
+        "description": "Audits local-only private sly_data medical needs (cold-chain insulin, dialysis, oxygen) inside the caller's browser without exposing PII to peers.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "anonymous_supply_check": {
+              "type": "string",
+              "description": "Sanitized supply category to cross-check against local sly_data requirements."
+            }
+          },
+          "required": [
+            "anonymous_supply_check"
+          ]
+        }
+      },
+      "instructions": "Verify that private sly_data constraints are satisfied by candidate shelters and anonymous depot inventory while confirming zero outbound PII disclosure.",
+      "tools": []
+    }
+  ]
+}
